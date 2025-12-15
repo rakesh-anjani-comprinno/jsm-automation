@@ -1,0 +1,20 @@
+modules:
+  trigger:
+    - key: jsm-automation-example-workflow-validator
+      function: incident-handler
+      events:
+        - avi:jira:created:issue
+  function:
+    - key: incident-handler
+      handler: index.handleIncidentCreation
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
+    - read:jira-user
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/e74e5808-2c42-495e-ae12-2e6fc8d42962
