@@ -281,11 +281,12 @@ function getClientValue(description, summary) {
     description.includes('851725323968')
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE.Finfinity
-  } else if (description.match(/Client = Fiery-enterprise/i) ||
+  } else if (
+    description.match(/Client = Fiery-enterprise/i) ||
     description.match(/Client= Fiery-enterprise/i) ||
     description.match(/Client : Fiery-enterprise/i) ||
-    description.match(/Client: Fiery-enterprise/i) ||  
-) {
+    description.match(/Client: Fiery-enterprise/i)
+  ) {
     clientValue = CLIENT_DROPDOWN_VALUE["Fiery-enterprise"]
   }
   return clientValue
