@@ -295,8 +295,12 @@ function getClientValue(description, summary) {
 function getSeverityValue(description, summary) {
   if (!description && !summary) return null;
 
-  if (summary && summary.includes(/AWS Budgets/i) && summary.includes(/AWS Cost Management/i)) {
-    return SEVERITY_DROPDOWN_VALUE.High
+  if (
+    summary && (
+    summary.match(/AWS Budgets/i) ||
+    summary.match(/AWS Cost Management/i))
+  ) {
+    return SEVERITY_DROPDOWN_VALUE.High;
   }
 
   if (!description) return null;
