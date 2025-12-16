@@ -18,7 +18,7 @@ export async function handleIncidentCreation(event, context) {
 
       await setClientField(issueDetails, description, summary);
 
-      await setSeverityField(issueKey, description);
+      await setSeverityField(issueKey, description, summary);
 
       console.log(`Successfully processed incident: ${issueKey} under project : ${projectKey}`);
     } else {
@@ -73,7 +73,7 @@ async function setClientField(issueDetails, description, summary) {
   try {
     const clientFieldId = CLIENT_FIELD_NAME;
     let clientValue = getClientValue(description, summary);
-    if(clientValue === 'Finfinity' && issueDetails?.fields?.project?.key === "INC") {
+    if (clientValue === 'Finfinity' && issueDetails?.fields?.project?.key === "INC") {
       clientValue = 'finfinity'
     }
     if (clientValue) {
@@ -107,11 +107,11 @@ async function setClientField(issueDetails, description, summary) {
   }
 }
 
-async function setSeverityField(issueKey, description) {
+async function setSeverityField(issueKey, description, summary) {
 
   try {
     const severityFieldId = SERVERITY_FIELD_NAME;
-    const severityValue = getSeverityValue(description)
+    const severityValue = getSeverityValue(description, summary)
     if (severityValue) {
       console.log(`Setting severity field for ${issueKey} to: ${severityValue}`);
       const response = await api.asApp().requestJira(route`/rest/api/3/issue/${issueKey}`, {
@@ -281,13 +281,20 @@ function getClientValue(description, summary) {
     description.includes('851725323968')
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE.Finfinity
+  } else if (description.match(/Client = Fiery-enterprise/i)) {
+    clientValue = CLIENT_DROPDOWN_VALUE["Fiery-enterprise"]
   }
   return clientValue
 }
 
-function getSeverityValue(description) {
-  if (!description) return null;
+function getSeverityValue(description, summary) {
+  if (!description && !summary) return null;
 
+  if (summary && summary.includes(/AWS Budgets/i) && summary.includes(/AWS Cost Management/i)) {
+    return SEVERITY_DROPDOWN_VALUE.High
+  }
+
+  if(!description) return null;
   const lowerDescription = description.toLowerCase();
 
   if (containsSeverity(lowerDescription, 'critical')) {

@@ -20,6 +20,7 @@ export const CLIENT_DROPDOWN_VALUE = {
     'Tevico/Comprinno': 'Tevico/Comprinno',
     'Xposure': 'Xposure',
     'Finfinity': 'Finfinity',
+    'Fiery-enterprise': 'Fiery-enterprise',
 }
 
 export const SEVERITY_DROPDOWN_VALUE = {
