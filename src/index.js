@@ -164,6 +164,14 @@ function getClientValue(description, summary) {
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE.Hivepro
   }
+  else if (
+    description.match(/Client = Fiery-enterprise/i) ||
+    description.match(/Client= Fiery-enterprise/i) ||
+    description.match(/Client : Fiery-enterprise/i) ||
+    description.match(/Client: Fiery-enterprise/i)
+  ) {
+    clientValue = CLIENT_DROPDOWN_VALUE["Fiery-enterprise"]
+  }
   else if (description.match(/Client = Fiery/i) ||
     description.match(/Client= Fiery/i) ||
     description.match(/Client : Fiery/i) ||
@@ -281,13 +289,6 @@ function getClientValue(description, summary) {
     description.includes('851725323968')
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE.Finfinity
-  } else if (
-    description.match(/Client = Fiery-enterprise/i) ||
-    description.match(/Client= Fiery-enterprise/i) ||
-    description.match(/Client : Fiery-enterprise/i) ||
-    description.match(/Client: Fiery-enterprise/i)
-  ) {
-    clientValue = CLIENT_DROPDOWN_VALUE["Fiery-enterprise"]
   }
   return clientValue
 }
