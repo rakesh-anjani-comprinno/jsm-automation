@@ -298,10 +298,17 @@ function getSeverityValue(description, summary) {
 
   if (
     summary && (
-    summary.match(/AWS Budgets/i) ||
-    summary.match(/AWS Cost Management/i))
+      summary.match(/AWS Budgets/i) ||
+      summary.match(/AWS Cost Management/i))
   ) {
     return SEVERITY_DROPDOWN_VALUE.High;
+  }
+
+  if (
+    summary &&
+    /^GuardDuty Finding/i.test(summary)
+  ) {
+    return SEVERITY_DROPDOWN_VALUE.Highest
   }
 
   if (!description) return null;
