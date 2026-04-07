@@ -168,7 +168,12 @@ function getClientValue(description, summary) {
     description.match(/Client = Fiery-enterprise/i) ||
     description.match(/Client= Fiery-enterprise/i) ||
     description.match(/Client : Fiery-enterprise/i) ||
-    description.match(/Client: Fiery-enterprise/i)
+    description.match(/Client: Fiery-enterprise/i) || 
+    description.includes('657961393812') ||
+    description.includes('693566721376') ||
+    description.includes('724914397251') ||
+    description.includes('229423432283') ||
+    description.includes('664418970552')
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE["Fiery-enterprise"]
   }
