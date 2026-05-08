@@ -21,6 +21,8 @@ export const CLIENT_DROPDOWN_VALUE = {
     'Xposure': 'Xposure',
     'Finfinity': 'Finfinity',
     'Fiery-enterprise': 'Fiery-enterprise',
+    'OmnifiCX':'OmnifiCX',
+    'Enetro.ai':'Enetro.ai'
 }
 
 export const SEVERITY_DROPDOWN_VALUE = {

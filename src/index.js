@@ -295,6 +295,23 @@ function getClientValue(description, summary) {
   ) {
     clientValue = CLIENT_DROPDOWN_VALUE.Finfinity
   }
+   else if (description.match(/Client = OmnifiCX/i) ||
+    description.match(/Client= OmnifiCX/i) ||
+    description.match(/Client : OmnifiCX/i) ||
+    description.match(/Client: OmnifiCX/i) ||
+    description.includes('717279728868') ||
+    description.includes('113131631276')
+  ) {
+    clientValue = CLIENT_DROPDOWN_VALUE.OmnifiCX
+  }
+    else if (description.match(/Client = Enetro.ai/i) ||
+    description.match(/Client= Enetro.ai/i) ||
+    description.match(/Client : Enetro.ai/i) ||
+    description.match(/Client: Enetro.ai/i) ||
+    description.includes('117820556570') 
+  ) {
+    clientValue = CLIENT_DROPDOWN_VALUE["Enetro.ai"]
+  }
   return clientValue
 }
 
